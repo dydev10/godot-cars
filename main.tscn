@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://deqvo6ldet2k3"]
+[gd_scene load_steps=22 format=3 uid="uid://deqvo6ldet2k3"]
 
 [ext_resource type="Texture2D" uid="uid://qfr6cnbfvgd8" path="res://autumn_field_puresky_4k.hdr" id="1_h2yge"]
-[ext_resource type="PackedScene" uid="uid://ci78nttrocf50" path="res://models/chest_gold/chest_gold.glb" id="2_0xm2m"]
 [ext_resource type="Material" uid="uid://dan36vm5ws1ev" path="res://materials/proto_dark_grid.tres" id="2_1bvp3"]
 [ext_resource type="Material" uid="uid://bnj68pani3frv" path="res://materials/proto_green.tres" id="4_1bvp3"]
 [ext_resource type="Script" uid="uid://c40uo7qdgdow5" path="res://raycast_car.gd" id="4_lquwl"]
@@ -146,9 +145,6 @@ mesh = SubResource("PrismMesh_ig7tw")
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="ObstaclesCSGCombiner3D"]
 transform = Transform3D(2.1, 0, 0, 0, 0.7, 0, 0, 0, 2.1, -12.3, 0.7, -16.3)
 use_collision = true
-
-[node name="chest_gold2" parent="." instance=ExtResource("2_0xm2m")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.1, 0, -12.3)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(0.5, 0.433013, -0.75, 0, 0.866025, 0.5, 0.866025, -0.25, 0.433013, -6, 2.7, 1.2)
