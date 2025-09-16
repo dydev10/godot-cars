@@ -44,11 +44,11 @@ func _apply_wheel_physics(car: RaycastCar) -> void:
 	
 	## Calculate the spring length based on raycast hit distance
 	var rayHit := get_collision_point()
-	var springLen := global_position.distance_to(rayHit) - wheelRadius
+	var springLen := maxf(0.0, global_position.distance_to(rayHit) - wheelRadius)
 	var offset := restDist - springLen
 	
 	## Adjust local y position of wheel mesh based on spring length
-	wheel.position.y = -springLen
+	wheel.position.y = -springLen  # TODO: lerp the position of wheel to avoid jumps on sudden ground height change
 
 	## Set contact point as the wheel origin point and calculate local force position on car body
 	var contact := wheel.global_position
