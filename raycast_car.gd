@@ -19,6 +19,7 @@ class_name RaycastCar
 var motor_input := 0
 var handbrake := false
 var isSlipping := false
+var isBraking := false
 
 
 func _unhandled_input(event: InputEvent) -> void:
@@ -37,6 +38,12 @@ func _unhandled_input(event: InputEvent) -> void:
 		motor_input = -1
 	elif event.is_action_released("move_down"):
 		motor_input = 0
+	
+	if Input.is_action_pressed("brake"):
+		isBraking = true
+	else:
+		isBraking = false
+	
 
 
 func _physics_process(delta: float) -> void:

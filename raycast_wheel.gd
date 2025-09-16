@@ -7,6 +7,9 @@ class_name RaycastWheel
 @export var restDist := 0.5
 @export var wheelRadius := 0.4
 @export var overExtend := 0.0
+@export var zTraction := 0.05
+@export var zBrakeTraction := 0.25
+ 
 
 @export_group("Motor & Traction")
 @export var isMotor := false
@@ -105,10 +108,12 @@ func _apply_wheel_physics(car: RaycastCar) -> void:
 	#
 	## Tire Z Traction (Drag)
 	var fVel := forwardDir.dot(tireVel)
-	var zTraction := 0.05
+	var zFriction := zTraction
+	if car.isBraking:
+		zFriction = zBrakeTraction
 	
 	## Final tire drag force (zForce)
-	var zForce: Vector3 = global_basis.z * fVel * zTraction * ((car.mass * gravity) / car.totalWheels)
+	var zForce: Vector3 = global_basis.z * fVel * zFriction * ((car.mass * gravity) / car.totalWheels)
 	
 	##
 	#

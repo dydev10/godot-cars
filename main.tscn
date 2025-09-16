@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://deqvo6ldet2k3"]
+[gd_scene load_steps=24 format=3 uid="uid://deqvo6ldet2k3"]
 
 [ext_resource type="Texture2D" uid="uid://qfr6cnbfvgd8" path="res://autumn_field_puresky_4k.hdr" id="1_h2yge"]
 [ext_resource type="Material" uid="uid://dan36vm5ws1ev" path="res://materials/proto_dark_grid.tres" id="2_1bvp3"]
@@ -6,7 +6,9 @@
 [ext_resource type="Script" uid="uid://c40uo7qdgdow5" path="res://raycast_car.gd" id="4_lquwl"]
 [ext_resource type="Material" uid="uid://dnbkuerwgxdvj" path="res://materials/proto_black.tres" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://d2f3fjqki34tb" path="res://raycast_wheel.gd" id="6_272bh"]
+[ext_resource type="Curve" uid="uid://iu50vlr3f1vg" path="res://tire_grip_FRONT.tres" id="6_kek77"]
 [ext_resource type="Script" uid="uid://bdrotyn6hyp38" path="res://car_follow_camera.gd" id="7_272bh"]
+[ext_resource type="Curve" uid="uid://cl73eam4mkvmj" path="res://tire_grip_BACK.tres" id="8_4c57u"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("1_h2yge")
@@ -36,11 +38,6 @@ size = Vector3(1.6, 0.5, 2)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_lquwl"]
 size = Vector3(2, 0.5, 4)
-
-[sub_resource type="Curve" id="Curve_5vw27"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(0.9, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
-point_count = 4
-metadata/_snap_enabled = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_272bh"]
 top_radius = 0.4
@@ -82,7 +79,7 @@ use_collision = true
 [node name="Floor" type="CSGBox3D" parent="FloorCSGCombiner3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
 use_collision = true
-size = Vector3(100, 1, 100)
+size = Vector3(200, 1, 200)
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="FloorCSGCombiner3D"]
 transform = Transform3D(-8.74228e-09, 1, 0, -0.2, -4.37114e-08, 0, 0, 0, 0.2, 0, 0, -3)
@@ -159,7 +156,6 @@ mass = 50.0
 linear_damp_mode = 1
 script = ExtResource("4_lquwl")
 wheels = [NodePath("WheelFL"), NodePath("WheelFR"), NodePath("WheelRL"), NodePath("WheelRR")]
-acceleration = 800.0
 powerCurve = SubResource("Curve_272bh")
 skidMarks = [NodePath("SkidMarks/GPUParticles3D"), NodePath("SkidMarks/GPUParticles3D2"), NodePath("SkidMarks/GPUParticles3D3"), NodePath("SkidMarks/GPUParticles3D4")]
 showDebug = true
@@ -184,7 +180,7 @@ springStrengh = 5000
 springDamping = 120.0
 overExtend = 0.2
 isSteer = true
-gripCurve = SubResource("Curve_5vw27")
+gripCurve = ExtResource("6_kek77")
 showDebug = true
 
 [node name="Wheel" type="MeshInstance3D" parent="Car/WheelFL"]
@@ -200,28 +196,11 @@ springStrengh = 5000
 springDamping = 120.0
 overExtend = 0.2
 isSteer = true
-gripCurve = SubResource("Curve_5vw27")
+gripCurve = ExtResource("6_kek77")
 showDebug = true
 
 [node name="Wheel" type="MeshInstance3D" parent="Car/WheelFR"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, 0)
-material_override = ExtResource("6_7mycd")
-mesh = SubResource("CylinderMesh_272bh")
-
-[node name="WheelRR" type="RayCast3D" parent="Car"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, 1.3)
-enabled = false
-script = ExtResource("6_272bh")
-springStrengh = 5000
-springDamping = 120.0
-wheelRadius = 0.54
-overExtend = 0.2
-isMotor = true
-gripCurve = SubResource("Curve_5vw27")
-showDebug = true
-
-[node name="Wheel" type="MeshInstance3D" parent="Car/WheelRR"]
-transform = Transform3D(-5.90104e-08, -1.35, 0, 1.35, -5.90104e-08, 0, 0, 0, 1.35, 0, -0.5, 0)
 material_override = ExtResource("6_7mycd")
 mesh = SubResource("CylinderMesh_272bh")
 
@@ -234,10 +213,27 @@ springDamping = 120.0
 wheelRadius = 0.54
 overExtend = 0.2
 isMotor = true
-gripCurve = SubResource("Curve_5vw27")
+gripCurve = ExtResource("8_4c57u")
 showDebug = true
 
 [node name="Wheel" type="MeshInstance3D" parent="Car/WheelRL"]
+transform = Transform3D(-5.90104e-08, -1.35, 0, 1.35, -5.90104e-08, 0, 0, 0, 1.35, 0, -0.5, 0)
+material_override = ExtResource("6_7mycd")
+mesh = SubResource("CylinderMesh_272bh")
+
+[node name="WheelRR" type="RayCast3D" parent="Car"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.1, 0, 1.3)
+enabled = false
+script = ExtResource("6_272bh")
+springStrengh = 5000
+springDamping = 120.0
+wheelRadius = 0.54
+overExtend = 0.2
+isMotor = true
+gripCurve = ExtResource("8_4c57u")
+showDebug = true
+
+[node name="Wheel" type="MeshInstance3D" parent="Car/WheelRR"]
 transform = Transform3D(-5.90104e-08, -1.35, 0, 1.35, -5.90104e-08, 0, 0, 0, 1.35, 0, -0.5, 0)
 material_override = ExtResource("6_7mycd")
 mesh = SubResource("CylinderMesh_272bh")
