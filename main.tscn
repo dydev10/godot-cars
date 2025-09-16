@@ -157,6 +157,7 @@ wheels = [NodePath("WheelFL"), NodePath("WheelFR"), NodePath("WheelRL"), NodePat
 acceleration = 800.0
 powerCurve = SubResource("Curve_272bh")
 skidMarks = [NodePath("SkidMarks/GPUParticles3D"), NodePath("SkidMarks/GPUParticles3D2"), NodePath("SkidMarks/GPUParticles3D3"), NodePath("SkidMarks/GPUParticles3D4")]
+showDebug = true
 
 [node name="CarMesh" type="MeshInstance3D" parent="Car"]
 material_override = ExtResource("4_1bvp3")
@@ -177,7 +178,9 @@ script = ExtResource("6_272bh")
 springStrengh = 5000
 springDamping = 120.0
 overExtend = 0.2
+isSteer = true
 gripCurve = SubResource("Curve_5vw27")
+showDebug = true
 
 [node name="Wheel" type="MeshInstance3D" parent="Car/WheelFL"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, 0)
@@ -191,7 +194,9 @@ script = ExtResource("6_272bh")
 springStrengh = 5000
 springDamping = 120.0
 overExtend = 0.2
+isSteer = true
 gripCurve = SubResource("Curve_5vw27")
+showDebug = true
 
 [node name="Wheel" type="MeshInstance3D" parent="Car/WheelFR"]
 transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, -0.5, 0)
@@ -208,6 +213,7 @@ wheelRadius = 0.54
 overExtend = 0.2
 isMotor = true
 gripCurve = SubResource("Curve_5vw27")
+showDebug = true
 
 [node name="Wheel" type="MeshInstance3D" parent="Car/WheelRR"]
 transform = Transform3D(-5.90104e-08, -1.35, 0, 1.35, -5.90104e-08, 0, 0, 0, 1.35, 0, -0.5, 0)
@@ -224,6 +230,7 @@ wheelRadius = 0.54
 overExtend = 0.2
 isMotor = true
 gripCurve = SubResource("Curve_5vw27")
+showDebug = true
 
 [node name="Wheel" type="MeshInstance3D" parent="Car/WheelRL"]
 transform = Transform3D(-5.90104e-08, -1.35, 0, 1.35, -5.90104e-08, 0, 0, 0, 1.35, 0, -0.5, 0)
