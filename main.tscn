@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://deqvo6ldet2k3"]
+[gd_scene load_steps=23 format=3 uid="uid://deqvo6ldet2k3"]
 
 [ext_resource type="Texture2D" uid="uid://qfr6cnbfvgd8" path="res://autumn_field_puresky_4k.hdr" id="1_h2yge"]
 [ext_resource type="Material" uid="uid://dan36vm5ws1ev" path="res://materials/proto_dark_grid.tres" id="2_1bvp3"]
@@ -6,6 +6,7 @@
 [ext_resource type="Script" uid="uid://c40uo7qdgdow5" path="res://raycast_car.gd" id="4_lquwl"]
 [ext_resource type="Material" uid="uid://dnbkuerwgxdvj" path="res://materials/proto_black.tres" id="6_7mycd"]
 [ext_resource type="Script" uid="uid://d2f3fjqki34tb" path="res://raycast_wheel.gd" id="6_272bh"]
+[ext_resource type="Script" uid="uid://bdrotyn6hyp38" path="res://car_follow_camera.gd" id="7_272bh"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_h2yge"]
 panorama = ExtResource("1_h2yge")
@@ -37,8 +38,8 @@ size = Vector3(1.6, 0.5, 2)
 size = Vector3(2, 0.5, 4)
 
 [sub_resource type="Curve" id="Curve_5vw27"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.3, 0.4), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
-point_count = 3
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.5, 0.8), 0.0, 0.0, 0, 0, Vector2(0.9, 0.1), 0.0, 0.0, 0, 0, Vector2(1, 0.1), 0.0, 0.0, 0, 0]
+point_count = 4
 metadata/_snap_enabled = true
 
 [sub_resource type="CylinderMesh" id="CylinderMesh_272bh"]
@@ -277,3 +278,11 @@ lifetime = 1.5
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_272bh")
 draw_pass_1 = SubResource("QuadMesh_5vw27")
+
+[node name="CameraPivot" type="Node3D" parent="Car"]
+
+[node name="Camera3D" type="Camera3D" parent="Car/CameraPivot"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 4)
+top_level = true
+current = true
+script = ExtResource("7_272bh")
