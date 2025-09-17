@@ -51,7 +51,8 @@ func _apply_wheel_physics(car: RaycastCar) -> void:
 	var offset := restDist - springLen
 	
 	## Adjust local y position of wheel mesh based on spring length
-	wheel.position.y = -springLen  # TODO: lerp the position of wheel to avoid jumps on sudden ground height change
+	#wheel.position.y = -springLen  # TODO: lerp the position of wheel to avoid jumps on sudden ground height change
+	wheel.position.y = move_toward(wheel.position.y, -springLen, 5 * get_process_delta_time())  # TODO: lerp the position of wheel to avoid jumps on sudden ground height change
 
 	## Set contact point as the wheel origin point and calculate local force position on car body
 	var contact := wheel.global_position
