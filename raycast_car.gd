@@ -8,6 +8,9 @@ class_name RaycastCar
 @export var tireTurnSpeed := 2.0
 @export var tireMaxTurnDegree := 25.0
 
+@export var minEnginePitch := 0.4
+@export var slideEnginePitch := 2.0
+
 @export var skidMarks: Array[GPUParticles3D]
 
 # debug state
@@ -15,12 +18,19 @@ class_name RaycastCar
 
 
 @onready var totalWheels := wheels.size()
+@onready var engineSound: AudioStreamPlayer3D = $EngineSound
+
 
 var motor_input := 0
 var handbrake := false
 var isSlipping := false
 var isBraking := false
 
+
+func _ready() -> void:
+	## start playing engine sound when car loads
+	engineSound.set_pitch_scale(minEnginePitch)
+	engineSound.play()
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("handbrake"):
@@ -49,6 +59,8 @@ func _unhandled_input(event: InputEvent) -> void:
 func _physics_process(delta: float) -> void:
 	var isGrounded := false
 	var id := 0
+	
+	_handle_car_sounds()
 	
 	for wheel in wheels:
 		_basic_steering_rotation(wheel, delta)
@@ -93,3 +105,16 @@ func _basic_steering_rotation(wheel: RaycastWheel, delta: float) -> void:
 		wheel.rotation.y = clamp(wheel.rotation.y + turnInput * delta, -deg_to_rad(tireMaxTurnDegree), deg_to_rad(tireMaxTurnDegree))
 	else:
 		wheel.rotation.y = move_toward(wheel.rotation.y, 0.0, tireTurnSpeed * delta)
+
+
+func _handle_car_sounds() -> void:
+	var forwardDir := -global_basis.z
+	var vel := forwardDir.dot(linear_velocity)
+	var newPitch := maxf(0.0, (vel / maxSpeed)) + minEnginePitch
+	
+	## Set pitch scale of engine sound according to forward speed
+	# TODO: handle no acceleration and sliding
+	engineSound.set_pitch_scale(newPitch) 
+	
+	#if isSlipping and motor_input:
+		#engineSound.set_pitch_scale(slideEnginePitch) 
