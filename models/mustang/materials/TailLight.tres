@@ -1,0 +1,7 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://dcj286ei06qhd"]
+
+[resource]
+resource_name = "TailLight"
+cull_mode = 2
+albedo_color = Color(0.906573, 0.13339871, 0.21960023, 1)
+roughness = 0.5

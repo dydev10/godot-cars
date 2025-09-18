@@ -87,7 +87,7 @@ func _physics_process(delta: float) -> void:
 	else:
 		center_of_mass_mode = RigidBody3D.CENTER_OF_MASS_MODE_CUSTOM
 		center_of_mass = Vector3.DOWN * 0.5
-		
+	
 	if showDebug:
 		DebugDraw3D.draw_sphere(global_position + center_of_mass, 0.2, Color.MAROON)
 		DebugDraw3D.draw_arrow_ray(global_position, linear_velocity, 1.0, Color.GREEN, 0.02)

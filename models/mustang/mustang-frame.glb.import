@@ -37,6 +37,49 @@ import_script/path=""
 materials/extract=0
 materials/extract_format=0
 materials/extract_path=""
-_subresources={}
+_subresources={
+"materials": {
+"AirIntake": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/AirIntake.tres",
+"use_external/path": "uid://dmuevhyekvn6s"
+},
+"BorderWindow": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/BorderWindow.tres",
+"use_external/path": "uid://10rrisr5cvw5"
+},
+"FloorRail": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/FloorRail.tres",
+"use_external/path": "uid://dk1p6xahyl1ch"
+},
+"HeadLightEmission": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/HeadLightEmission.tres",
+"use_external/path": "uid://vbcn2dc7ad3t"
+},
+"Paint": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/Paint.tres",
+"use_external/path": "uid://dl6unlxala862"
+},
+"TailEmission": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/TailEmission.tres",
+"use_external/path": "uid://ce84vmwhixj5p"
+},
+"TailLight": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/TailLight.tres",
+"use_external/path": "uid://dcj286ei06qhd"
+},
+"Windows": {
+"use_external/enabled": true,
+"use_external/fallback_path": "res://models/mustang/materials/Windows.tres",
+"use_external/path": "uid://dga6mkriglr40"
+}
+}
+}
 gltf/naming_version=2
 gltf/embedded_image_handling=1
