@@ -6,8 +6,8 @@
 [ext_resource type="Script" uid="uid://c40uo7qdgdow5" path="res://raycast_car.gd" id="4_lquwl"]
 [ext_resource type="PackedScene" uid="uid://dq1n1v4axkftr" path="res://models/mustang/mustang-frame.glb" id="6_2cqfq"]
 [ext_resource type="Script" uid="uid://d2f3fjqki34tb" path="res://raycast_wheel.gd" id="6_272bh"]
-[ext_resource type="Curve" uid="uid://iu50vlr3f1vg" path="res://tire_grip_FRONT.tres" id="6_kek77"]
 [ext_resource type="Script" uid="uid://bdrotyn6hyp38" path="res://car_follow_camera.gd" id="7_272bh"]
+[ext_resource type="Curve" uid="uid://gv0qsrvniq3a" path="res://tire_grip_FRONT_slidy.tres" id="7_yaehf"]
 [ext_resource type="Curve" uid="uid://cl73eam4mkvmj" path="res://tire_grip_BACK.tres" id="8_4c57u"]
 [ext_resource type="PackedScene" uid="uid://bgfcvjx7ia1po" path="res://models/mustang/mustang-wheel.glb" id="9_2cqfq"]
 [ext_resource type="AudioStream" uid="uid://w4pocrpmtgkv" path="res://sounds/Car_Engine_Loop.ogg" id="11_2cqfq"]
@@ -172,7 +172,7 @@ restDist = 0.1
 wheelRadius = 0.31
 overExtend = 0.1
 isSteer = true
-gripCurve = ExtResource("6_kek77")
+gripCurve = ExtResource("7_yaehf")
 showDebug = true
 
 [node name="mustang-wheel" parent="Car/WheelFL" instance=ExtResource("9_2cqfq")]
@@ -188,7 +188,7 @@ restDist = 0.1
 wheelRadius = 0.31
 overExtend = 0.1
 isSteer = true
-gripCurve = ExtResource("6_kek77")
+gripCurve = ExtResource("7_yaehf")
 showDebug = true
 
 [node name="mustang-wheel2" parent="Car/WheelFR" instance=ExtResource("9_2cqfq")]
